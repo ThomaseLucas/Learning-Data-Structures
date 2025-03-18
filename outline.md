@@ -1,28 +1,22 @@
 # Data Structures Tutorial
 ## I. Welcome
 * Introduction
-* Contact Information
-## II. Stack or Queue _(pick one)_
+* Thomas Lucas thomaselucas2020@gmail.com section 02?
+## II. Stack 
 * Introduction
-* ...
-* _(replace these lines with headings that you'd use to teach this data structure)_
-* ...
-* Efficiency of common operations
-* Example Problem
+* The purpose of a stack
+* The syntax of a stack
+* The Pros and Cons of a stack
 * Problem to Solve
-## III. Set or Linked List _(pick one)_
+## III. Linked List
 * Introduction
-* ...
-* _(replace these lines with headings that you'd use to teach this data structure)_
-* ...
-* Efficiency of common operations
-* Example Problem
+* The purpose of a linked list
+* The syntax of a linked list
+* The Pros and Cons of a linked list
 * Problem to Solve
 ## IV. Tree
 * Introduction
-* ...
-* _(replace these lines with headings that you'd use to teach this data structure)_
-* ...
-* Efficiency of common operations
-* Example Problem
+* The purpose of a tree
+* The syntax of a tree
+* The Pros and Cons of a tree
 * Problem to Solve
