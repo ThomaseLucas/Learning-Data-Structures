@@ -2,13 +2,13 @@
 
 A stack is a very useful tool in the kit of a developer. It allows for the simple management of data, kept in an even simpler order:
 
-![Image of a stack in action](image.png)
+![Image of a stack in action](images/stack.png)
 
 A stack can be described as a **LIFO (Last In First Out)** or **FILO (First In Last Out)** data structure. This simply means that the last piece of data put into the structure will be the first to come out when the correct method is called, or vice verse. The many advantages we will go over in this lesson will show why a stack is such a powerful tool.
 
 A stack behaves like a stack of books- _pushing_ adds a book on the top of the stack, and _popping_ takes the top book off.
 
-![Image of a stack of books](bookstack.jpg)
+![Image of a stack of books](images/bookstack.jpg)
 
 ## 1.0 The purpose of a stack
 
@@ -37,27 +37,93 @@ This will initialize a new stack called _"stack"_.
 To push something onto the stack, in this case an integer, all you have to do is this:
 
 ```csharp
-stack.push(1)
-stack.push(2)
-stack.push(45)
-stack.push(10)
+stack.push(1);
+stack.push(2);
+stack.push(45);
+stack.push(10);
+```
+
+To pop something off of the stack, all you do is this:
+
+```csharp
+stack.pop();
+stack.pop();
+```
+
+You can even set a variable equal to the popped value:
+
+```csharp
+value1 = stack.pop();
+```
+
+The third useful method in this data structure is called peek(). This lets you get the value of the top of the stack without having to remove it. This is the syntax:
+
+```csharp
+Stack<string> movies_2024 = new Stack<string>;
+
+//Adding movies to the stack
+movies_2024.push("Despicable Me 4");
+movies_2024.push("Godzilla x Kong");
+movies_2024.push("Inside Out 2");
+
+//prints out the latest movie to be added to the stack, which was the latest release at the time.
+Console.WriteLine("The most recent movie to come out is: " + movies_2024.Peek());
+```
+
+Stacks also have an attribute, which is called Count. This returns the "height" or length of a stack (how many books are stacked on top of one another). It looks like this:
+
+```csharp
+int stack_height = stack.Count;
+Console.WriteLine(stack_height);
 ```
 
 ### 2.1 Where would you use this?
 
-- How would the data structure be used in C# (in some cases you will need to discuss recursion)?
-
 ### 2.2 Simple example solution
 
-- What kind of problems can be solved using the data structure?
+Here is an example of using a stack to reverse a string in C#:
+
+```csharp
+//This is the given string to reverse
+var starting_word = "hello"
+
+//initialize the stack
+Stack<char> char_stack = new Stack<char>();
+
+//Now we will iterate through each character in the string, pushing each subsequent character onto the stack.
+foreach (char c in starting_word){
+    char_stack.Push(c);
+}
+
+//Now we will pop each character, and add it to a list, then use a join method to return a reversed string
+bool empty = false;
+List<char> char_list = new List<char>();
+
+while (!empty){
+    if (char_stack.Count == 0){
+        empty = true;
+    }
+    else{
+        char top_char = char_stack.Pop();
+        char_list.Add(top_char);
+    }
+}
+
+//Now print the joined list into a string.
+Console.WriteLine(string.Join("", char_list));
+```
 
 ## 3.0 Pros and Cons of a stack
 
 ### 3.1 Advantages
 
+A list of advantages will be put here
+
 ### 3.2 Disadvantages
 
-## 4.0 Problem to solve: ...
+A list of disadvantages will be put here
+
+## 4.0 Problem to solve: Library's return system (to be done by monday)
 
 [Back to welcome page](0-welcome.md)
 
