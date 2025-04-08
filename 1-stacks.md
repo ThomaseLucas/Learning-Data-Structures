@@ -1,32 +1,60 @@
 # Stack
 
-A stack is a very useful tool in the kit of a developer. It allows for the simple management of data, kept in an even simpler order:
-
 ![Image of a stack in action](images/stack.png)
 
-A stack can be described as a **LIFO (Last In First Out)** or **FILO (First In Last Out)** data structure. This simply means that the last piece of data put into the structure will be the first to come out when the correct method is called, or vice verse. The many advantages we will go over in this lesson will show why a stack is such a powerful tool.
+A stack is a **LIFO (Last In First Out)** or **FILO (First In Last Out)** data structure. This simply means that the last piece of data put into the structure will be the first to come out when the correct method is called, or vice versa. Stacks are used everywhere in computers, you probably use them everyday. Some very simple examples include your browser history, or even the undo button. Thanks to this lesson, you will be able to learn how they work, and where to use them in your code.
 
-A stack behaves like a stack of books- _pushing_ adds a book on the top of the stack, and _popping_ takes the top book off.
+A stack behaves like a pile of books- _pushing_ adds a book on the top of the stack, and _popping_ takes the top book off. To effectively use this data structure, it is imperative to learn where you would use a stack, and why its important to have it in your kit as a developer.
 
 ![Image of a stack of books](images/bookstack.jpg)
 
 ## 1.0 The purpose of a stack
 
-A stack is used for many reasons in programming, but as previously mentioned, the main reason is to keep data organized in a specific order. One common example is handling multiple function calls or recursion, which is **when a function calls itself**. Many compilers rely on stacks to manage function execution.
+The main reason a stack is used in programming is to keep data organized in a specific order. One common example is handling multiple function calls or recursion, which is **when a function calls itself**. Many compilers rely on stacks to manage function execution as well.
 
 > "Stacks are a simple and easy-to-understand data structure, making them suitable for a wide range of applications" (Geeks for Geeks, 2024).
 
-### 1.1 A stack's preformance
+### 1.1 Why would I use a stack?
 
-One of the biggest advantages of a stack is its preformance in regards to the Big O notation of the data structure:
+### 1.2 Where would I use a stack?
 
-    O(1)
+## 2.0 Pros and Cons of a stack
 
-This means that no matter how many "books" or data you put into a stack, it will always take the same amount of time to either **add** a book on top, **remove** a book from the top, or **read** the top book.
+As previously mentioned, a stack has many advantages compared to other data structures, to be able to effectively use a stack you must understand where it is good to be used and where it shouldn't be used. This section will help clarify the advantages and disadvantages of a stack. This will help you to know where to use them in your code.
 
-## 2.0 The syntax of a stack
+### 2.1 Advantages
 
-When coding in C#, creating a new stack object is fairly straight forward:
+- **Not easily corrupted**: Because of its restricted access pattern and simple structure, a stack is a secure and reliable structure. The less complex it is, the harder it is to mess something up within it.
+
+- **Efficient management of data**: The management of data within this structure is very straightforward, as only the top element can be accessed.
+
+- **Function-call management**: A stack is used with recursive or multiple function calls, as there are local variables that exist, they are put onto the stack to be taken off after the compiler returns to the original function.
+
+### 2.2 Disadvantages
+
+- **Memory size limited**: Since a stack's structure is so simple, it does not have dynamic memory, so there is a limit to how much memory can be used for a stack.
+
+- **Stack overflow**: This occurs because of the limited data disadvantage. It is when too many elements are added onto the stack, and it cannot hold anymore. This happens a lot in recursion, because the stack runs out of memory to store each function call.
+
+- **Incapable of doing a search**: You cannot find an element in the middle of stack, you have to pop() until you find the one that you are looking for.
+
+- **Random access**: In a stack, you cannot perform random accessing.
+
+## 3.0 The syntax of a stack
+
+When coding in C#, there are many different methods associated with a stack. This lesson will go over the most commonly used methods, and explain how they work, along with their time complexity in regards to big O notation.
+
+These are the 5 most commonly used methods in C# when using a stack:
+
+1. Push()
+1. Pop()
+1. Peek()
+1. Count
+1. Contains()
+
+### 3.1 Stack Initialization
+
+Creating a new stack object is fairly straight forward:
 
 ```csharp
 Stack<int> stack = new Stack<int>();
@@ -34,99 +62,86 @@ Stack<int> stack = new Stack<int>();
 
 This will initialize a new stack called _"stack"_.
 
-To push something onto the stack, in this case an integer, all you have to do is this:
+Complexity: O(1)
+
+### 3.2 Using Push()
+
+With stacks, you can use the method push(), to add an element to the top of a stack. This syntax is very simple:
 
 ```csharp
-stack.push(1);
-stack.push(2);
-stack.push(45);
-stack.push(10);
+stack.Push("first element!");
+//you can add another like this:
+stack.Push("second element!");
 ```
 
-To pop something off of the stack, all you do is this:
+Complexity: O(1)
+
+### 3.3 Using Pop()
+
+As a method, pop() removes the top element from the stack. It is used like this:
 
 ```csharp
-stack.pop();
-stack.pop();
+stack.Pop();
 ```
 
-You can even set a variable equal to the popped value:
+This can be used to simply take an element off the stack, or even be put into a variable like this:
 
 ```csharp
-value1 = stack.pop();
+var top_element = stack.Pop();
 ```
 
-The third useful method in this data structure is called peek(). This lets you get the value of the top of the stack without having to remove it. This is the syntax:
+Complexity: O(1)
+
+### 3.4 Using Peek()
+
+Peek() is used to only "look" at the top element in a stack. This returns the top element without removing it from the stack. It looks like this:
 
 ```csharp
-Stack<string> movies_2024 = new Stack<string>;
-
-//Adding movies to the stack
-movies_2024.push("Despicable Me 4");
-movies_2024.push("Godzilla x Kong");
-movies_2024.push("Inside Out 2");
-
-//prints out the latest movie to be added to the stack, which was the latest release at the time.
-Console.WriteLine("The most recent movie to come out is: " + movies_2024.Peek());
+var peeked_element = stack.Peek();
 ```
 
-Stacks also have an attribute, which is called Count. This returns the "height" or length of a stack (how many books are stacked on top of one another). It looks like this:
+### 3.5 Using Count
+
+This returns the "height" or amount of elements within a given stack (how many books are stacked on top of one another). This returns an integer, so you could use it in many different ways. It looks like this:
 
 ```csharp
-int stack_height = stack.Count;
-Console.WriteLine(stack_height);
+int size_of_stack = stack.Count;
 ```
 
-### 2.1 Where would you use this?
+Complexity: O(1)
 
-### 2.2 Simple example solution
+### 3.6 Using Contains()
 
-Here is an example of using a stack to reverse a string in C#:
+Conatains checks if a stack contains the specified element. This returns a boolean if it does or doesn't contain that element. This is the syntax:
 
 ```csharp
-//This is the given string to reverse
-var starting_word = "hello"
-
-//initialize the stack
-Stack<char> char_stack = new Stack<char>();
-
-//Now we will iterate through each character in the string, pushing each subsequent character onto the stack.
-foreach (char c in starting_word){
-    char_stack.Push(c);
-}
-
-//Now we will pop each character, and add it to a list, then use a join method to return a reversed string
-bool empty = false;
-List<char> char_list = new List<char>();
-
-while (!empty){
-    if (char_stack.Count == 0){
-        empty = true;
-    }
-    else{
-        char top_char = char_stack.Pop();
-        char_list.Add(top_char);
-    }
-}
-
-//Now print the joined list into a string.
-Console.WriteLine(string.Join("", char_list));
+bool exists = stack.Contains();
+//This could be used in an if statement like this:
+if (stack.Contains("first element!")){
+    //random code
+};
 ```
 
-## 3.0 Pros and Cons of a stack
+### 3.7 Overview
 
-### 3.1 Advantages
-
-A list of advantages will be put here
-
-### 3.2 Disadvantages
-
-A list of disadvantages will be put here
+| Method      | Description                                                            | Time Complexity |
+| ----------- | ---------------------------------------------------------------------- | --------------- |
+| Push()      | Adds a specified element to the top of a stack.                        | O(1)            |
+| Pop()       | Removes an element from the top of a stack.                            | O(1)            |
+| Peek()      | Returns the top element without removing it from the stack             | O(1)            |
+| Count       | Returns the number of elements within a stack _integer_                | O(1)            |
+| Countains() | Returns true or false based on if the stack contains a specified value | O(n)            |
 
 ## 4.0 Problem to solve: Library's return system (to be done by monday)
+
+Problem to solve: [Library returns]()
+
+See the solution: [Library returns explanation]()
 
 [Back to welcome page](0-welcome.md)
 
 ## Sources
 
-[Geeks for Geeks](https://geeksforgeeks.org)
+- [AplusTopper](https://www.aplustopper.com/advantages-and-disadvantages-of-stack/)
+
+- [Geeks for Geeks](https://geeksforgeeks.org)
